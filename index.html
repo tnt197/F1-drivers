@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F1 Driver Bios</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .fade {
+      transition: opacity 0.5s ease-in-out;
+    }
+    .hidden-content {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+    }
+    .visible-content {
+      opacity: 1;
+      pointer-events: auto;
+      position: relative;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col items-center p-6">
+
+  <h1 class="text-4xl font-bold mb-6 text-center">F1 Driver Biographies</h1>
+
+  <div class="flex space-x-4 mb-8">
+    <button onclick="showBio('hamilton')" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-xl transition">
+      Hamilton
+    </button>
+    <button onclick="showBio('verstappen')" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-xl transition">
+      Verstappen
+    </button>
+    <button onclick="showBio('leclerc')" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-xl transition">
+      Leclerc
+    </button>
+  </div>
+
+  <div id="bio-container" class="relative w-full max-w-xl text-center">
+    <!-- Hamilton -->
+    <div id="hamilton" class="fade visible-content">
+      <h2 class="text-2xl font-bold mb-2">Lewis Hamilton</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Lewis_Hamilton_2022.jpg/440px-Lewis_Hamilton_2022.jpg" alt="Lewis Hamilton" class="mx-auto rounded-2xl shadow-lg mb-4 w-60">
+      <p class="text-lg">Lewis Hamilton is a British racing driver with seven Formula One World Championships. Racing for Mercedes, he is celebrated for his dominance, consistency, and activism.</p>
+    </div>
+
+    <!-- Verstappen -->
+    <div id="verstappen" class="fade hidden-content">
+      <h2 class="text-2xl font-bold mb-2">Max Verstappen</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Max_Verstappen_2023.jpg/440px-Max_Verstappen_2023.jpg" alt="Max Verstappen" class="mx-auto rounded-2xl shadow-lg mb-4 w-60">
+      <p class="text-lg">Max Verstappen, from the Netherlands, races for Red Bull Racing. Known for his aggressive style, he won his first world title in 2021 and continues to set the pace.</p>
+    </div>
+
+    <!-- Leclerc -->
+    <div id="leclerc" class="fade hidden-content">
+      <h2 class="text-2xl font-bold mb-2">Charles Leclerc</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Charles_Leclerc_2022_Singapore.jpg/440px-Charles_Leclerc_2022_Singapore.jpg" alt="Charles Leclerc" class="mx-auto rounded-2xl shadow-lg mb-4 w-60">
+      <p class="text-lg">Charles Leclerc is a Monégasque driver with Scuderia Ferrari. Admired for his raw talent and speed, he is seen as a future World Champion in the making.</p>
+    </div>
+  </div>
+
+  <script>
+    function showBio(id) {
+      const sections = document.querySelectorAll("#bio-container > div");
+      sections.forEach(section => {
+        section.classList.remove("visible-content");
+        section.classList.add("hidden-content");
+      });
+      const active = document.getElementById(id);
+      active.classList.remove("hidden-content");
+      active.classList.add("visible-content");
+    }
+  </script>
+
+</body>
+</html>
